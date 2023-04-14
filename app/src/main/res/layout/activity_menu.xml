@@ -4,12 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="20dp"
+    android:orientation="vertical"
     tools:context=".MenuActivity">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSaludar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Saludo App"/>
+        android:text="Saludo App" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnIMCApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="IMC App" />
 
 </LinearLayout>
