@@ -2,4 +2,5 @@
     <string name="app_name">FirstApp</string>
     <string name="male">hombre</string>
     <string name="female">mujer</string>
+    <string name="height">altura</string>
 </resources>
