@@ -23,7 +23,10 @@ class ResultIMCActivity : AppCompatActivity() {
     }
 
     private fun initListeners() {
-        btnRecalculate.setOnClickListener { onBackPressed() }
+        btnRecalculate.setOnClickListener {
+            // onBackPressed() // deprecated
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     private fun initUI(result: Double) {
