@@ -1,45 +1,54 @@
 package com.leksilab.firstapp.todoapp
 
+import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.leksilab.firstapp.R
+import com.leksilab.firstapp.todoapp.TaskCategory.*
 
 class TodoActivity : AppCompatActivity() {
 
     private val categories = listOf(
-        TaskCategory.Business,
-        TaskCategory.Personal,
-        TaskCategory.Other
+        Business,
+        Personal,
+        Other
     )
 
-    /*private val tasks = mutableListOf(
+    private val tasks = mutableListOf(
         Task("PruebaBusiness", Business),
         Task("PruebaPersonal", Personal),
         Task("PruebaOther", Other)
-    )*/
+    )
 
     private lateinit var rvCategories: RecyclerView
     private lateinit var categoriesAdapter: CategoriesAdapter
+
+    private lateinit var rvTasks: RecyclerView
+    private lateinit var tasksAdapter: TasksAdapter
+
+    private lateinit var fabAddTask: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_todo)
         initComponent()
         initUI()
-//        initListeners()
+        initListeners()
     }
 
     private fun initListeners() {
-        //fabAddTask.setOnClickListener { showDialog() }
+        fabAddTask.setOnClickListener { showDialog() }
     }
 
     private fun showDialog(){
-        /*val dialog = Dialog(this)
+        val dialog = Dialog(this)
         dialog.setContentView(R.layout.dialog_task)
 
-        val btnAddTask: Button = dialog.findViewById(R.id.btnAddTask)
+        /*val btnAddTask: Button = dialog.findViewById(R.id.btnAddTask)
         val etTask: EditText = dialog.findViewById(R.id.etTask)
         val rgCategories: RadioGroup = dialog.findViewById(R.id.rgCategories)
 
@@ -58,26 +67,28 @@ class TodoActivity : AppCompatActivity() {
                 updateTasks()
                 dialog.hide()
             }
-        }
+        }*/
 
 
-        dialog.show()*/
+        dialog.show()
+
+        // Log.d("Alex: ", "Soy el FAB")
     }
 
     private fun initComponent() {
         rvCategories = findViewById(R.id.rvCategories)
-//        rvTasks = findViewById(R.id.rvTasks)
-//        fabAddTask = findViewById(R.id.fabAddTask)
+        rvTasks = findViewById(R.id.rvTasks)
+        fabAddTask = findViewById(R.id.fabAddTask)
     }
 
     private fun initUI() {
         categoriesAdapter = CategoriesAdapter(categories) //{ position -> updateCategories(position) }
         rvCategories.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rvCategories.adapter = categoriesAdapter
-//
-//        tasksAdapter = TasksAdapter(tasks) {position -> onItemSelected(position)}
-//        rvTasks.layoutManager = LinearLayoutManager(this)
-//        rvTasks.adapter = tasksAdapter
+
+        tasksAdapter = TasksAdapter(tasks) //{position -> onItemSelected(position)}
+        rvTasks.layoutManager = LinearLayoutManager(this) // solo this porque es vertical por defecto
+        rvTasks.adapter = tasksAdapter
     }
 
     private fun onItemSelected(position:Int){
