@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.AppCompatButton
+import com.leksilab.firstapp.dogapp.DogListActivity
 import com.leksilab.firstapp.imccalculator.ImcCalculatorActivity
 import com.leksilab.firstapp.superheroapp.SuperHeroListActivity
 import com.leksilab.firstapp.todoapp.TodoActivity
@@ -17,10 +18,12 @@ class MenuActivity : AppCompatActivity() {
         val btnImcApp = findViewById<AppCompatButton>(R.id.btnIMCApp)
         val btnTODO = findViewById<AppCompatButton>(R.id.btnTODO)
         val btnSuperHero = findViewById<AppCompatButton>(R.id.btnSuperHero)
+        val btnDogApp = findViewById<AppCompatButton>(R.id.btnDogApp)
         btnSaludar.setOnClickListener { navigateToSaludoApp() }
         btnImcApp.setOnClickListener { navigateToImcApp() }
         btnTODO.setOnClickListener { navigateToTODOApp() }
         btnSuperHero.setOnClickListener { navigateToSuperHero() }
+        btnDogApp.setOnClickListener { navigateToDogApp() }
     }
 
     private fun navigateToTODOApp() {
@@ -40,6 +43,11 @@ class MenuActivity : AppCompatActivity() {
 
     private fun navigateToSuperHero() {
         val intent = Intent(this, SuperHeroListActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToDogApp() {
+        val intent = Intent(this, DogListActivity::class.java)
         startActivity(intent)
     }
 }
