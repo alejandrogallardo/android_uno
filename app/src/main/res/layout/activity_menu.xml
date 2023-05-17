@@ -37,4 +37,10 @@
         android:layout_height="wrap_content"
         android:text="Dog App" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnComponentes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Componentes App" />
+
 </LinearLayout>
